@@ -1,9 +1,7 @@
-import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { Header } from "./components/molecules";
-import Sidebar from "./components/molecules/Sidebar";
+import Sidebar from "./components/organisms/Sidebar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Link } from "./components/molecules";
+import { Link } from "./models";
 import { Main, Streams } from "./pages";
 
 import "./App.css";
@@ -12,8 +10,8 @@ import "bootstrap/dist/css/bootstrap.css";
 function App() {
   const navigationLinks: Array<Link> = [
     {
-      ref: "/home",
-      name: "Home",
+      ref: "/Main",
+      name: "Main",
     },
     {
       ref: "/streams",
@@ -23,20 +21,17 @@ function App() {
 
   return (
     <Router>
-      <Container>
-        <Row>
-          <Header brandText="NetStreams Control Center" />
-        </Row>
+      <Container fluid>
         <Row>
           <Col xs={2} id="sidebar-wrapper">
             <Sidebar navigationLinks={navigationLinks} />
           </Col>
           <Col xs={10} id="page-content-wrapper">
             <Switch>
-              <Route path="/main">
+              <Route path="/Main">
                 <Main />
               </Route>
-              <Route path="/streams">
+              <Route path="/Streams">
                 <Streams />
               </Route>
             </Switch>
