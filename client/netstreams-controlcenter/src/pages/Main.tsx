@@ -1,9 +1,12 @@
 import React, { FC } from "react";
+import {Container, Row} from "react-bootstrap";
 
 export const Main: FC = () => {
-    return (
-        <div>
-            Hello world! Main Page
-        </div>
-    )
-}
+  return (
+    <Container>
+      <Row>
+        <p> Main Page</p>
+      </Row>
+    </Container>
+  );
+};

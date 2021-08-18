@@ -34,17 +34,16 @@
   min-height: 100vh !important;
   z-index: 100;
   padding: 48px 0 0;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
-#sidebar-wrapper{
-
+#sidebar-wrapper {
   width: 100vw;
   margin-left: -1rem;
-  -webkit-transition: margin .25s ease-out;
-  -moz-transition: margin .25s ease-out;
-  -o-transition: margin .25s ease-out;
-  transition: margin .25s ease-out;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
 }
 #sidebar-wrapper .sidebar-heading {
   padding: 0.875rem 1.25rem;
@@ -55,5 +54,10 @@
   min-width: 0;
   width: 100%;
   margin-top: 50px;
-  margin-left:200px;
+  margin-left: 100px;
+}
+
+.processor-status {
+  height: 24px;
+  width: 24px;
 }

@@ -1,11 +1,7 @@
 import React, { FC } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { withRouter, RouteComponentProps } from "react-router";
-
-export type Link = {
-  ref: string;
-  name: string;
-};
+import { Link } from "../../models";
 
 type PathParamsType = {
   param1: string;
@@ -21,7 +17,6 @@ const Side: FC<SidebarProps> = ({ navigationLinks }: SidebarProps) => {
       <Nav
         className="d-none d-md-block bg-light sidebar"
         activeKey="/Main"
-        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
       >
         <div className="sidebar-sticky"></div>
         <Navbar.Brand>NetStreams CC</Navbar.Brand>
