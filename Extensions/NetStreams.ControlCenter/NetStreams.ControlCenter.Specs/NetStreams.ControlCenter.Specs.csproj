@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Folder Include="Specifications\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Machine.Specifications" Version="1.0.0" />
+		<PackageReference Include="Machine.Specifications.Runner.VisualStudio" Version="2.10.2" />
+		<PackageReference Include="Machine.Specifications.Should" Version="1.0.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.0-preview-20201123-03" />
+	</ItemGroup>
+
+</Project>
