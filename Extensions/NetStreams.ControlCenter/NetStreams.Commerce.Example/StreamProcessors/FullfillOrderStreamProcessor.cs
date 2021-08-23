@@ -70,7 +70,7 @@ namespace NetStreams.Commerce.Example.StreamProcessors
         {
             await _stream.StopAsync(cancellationToken);
 
-            return base.StopAsync(cancellationToken);
+            await base.StopAsync(cancellationToken);
         }
     }
 }
