@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Confluent.Kafka;
+using NetStreams.Telemetry;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Confluent.Kafka;
-using NetStreams.Telemetry;
 
-namespace NetStreams.ControlCenter
+namespace NetStreams.Extensions.ControlCenter
 {
     public class ControlCenterTelemetryClient : INetStreamTelemetryClient
     {

@@ -1,7 +1,7 @@
 ﻿using Confluent.Kafka;
 using NetStreams.Authentication;
 
-namespace NetStreams.ControlCenter
+namespace NetStreams.Extensions.ControlCenter
 {
     public class ControlCenterTelemetryConfiguration : IControlCenterTelemetryConfiguration
     {

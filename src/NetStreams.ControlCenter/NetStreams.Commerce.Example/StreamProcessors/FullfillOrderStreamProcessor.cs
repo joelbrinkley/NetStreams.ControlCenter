@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 using NetStreams.Authentication;
 using NetStreams.Commerce.Example.Configuration;
 using NetStreams.Commerce.Example.Events;
-using NetStreams.ControlCenter;
+using NetStreams.Extensions.ControlCenter;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,7 +20,6 @@ namespace NetStreams.Commerce.Example.StreamProcessors
         {
             _configuration = configuration;
         }
-
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {

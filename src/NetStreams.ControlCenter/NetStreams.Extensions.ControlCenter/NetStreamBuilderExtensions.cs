@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace NetStreams.ControlCenter
+namespace NetStreams.Extensions.ControlCenter
 {
     public static class NetStreamBuilderExtensions
     {

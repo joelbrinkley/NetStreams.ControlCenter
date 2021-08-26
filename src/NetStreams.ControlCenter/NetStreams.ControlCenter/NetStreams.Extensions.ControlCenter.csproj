@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Confluent.Kafka" Version="1.7.0" />
-    <PackageReference Include="NetStreams" Version="3.0.1" />
+    <PackageReference Include="NetStreams" Version="3.0.3" />
   </ItemGroup>
 
 </Project>
