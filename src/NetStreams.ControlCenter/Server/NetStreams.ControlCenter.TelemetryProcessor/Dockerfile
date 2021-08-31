@@ -5,10 +5,10 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["NetStreams.ControlCenter/NetStreams.ControlCenter.TelemetryProcessor.csproj", "NetStreams.ControlCenter/"]
-RUN dotnet restore "NetStreams.ControlCenter/NetStreams.ControlCenter.TelemetryProcessor.csproj"
+COPY ["src/NetStreams.ControlCenter/Server/NetStreams.ControlCenter.TelemetryProcessor/NetStreams.ControlCenter.TelemetryProcessor.csproj", "NetStreams.ControlCenter/Server/NetStreams.ControlCenter.TelemetryProcessor/"]
+RUN dotnet restore "NetStreams.ControlCenter/Server/NetStreams.ControlCenter.TelemetryProcessor/NetStreams.ControlCenter.TelemetryProcessor.csproj"
 COPY . .
-WORKDIR "/src/NetStreams.ControlCenter"
+WORKDIR "/src/Server/NetStreams.ControlCenter.TelemetryProcessor/NetStreams.ControlCenter"
 RUN dotnet build "NetStreams.ControlCenter.TelemetryProcessor.csproj" -c Release -o /app/build
 
 FROM build AS publish

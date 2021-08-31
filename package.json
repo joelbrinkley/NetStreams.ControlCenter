@@ -9,9 +9,10 @@
         "url": "https://https://github.com/joelbrinkley/NetStreams.ControlCenter.git"
     },
     "scripts": {
-        "docker-up": "npm run docker-up:infra && docker-compose -f docker/docker-compose.yml -p netstreams-control-center --project-directory . up -d --remove-orphans --build ",
+        "docker-up": "npm run docker-up:infra && npm run docker-build",
+        "docker-build": "cross-env-shell docker-compose -f docker/docker-compose.yml -p netstreams-controlcenter --project-directory . up -d --remove-orphans --build ",
         "docker-up:infra": "npm run docker-up:launch && npm-run-all docker-up:post-launch-config:*",
-        "docker-up:launch": "cross-env-shell docker-compose -f docker/docker-compose.infrastructure.yml --project-directory . up -d --remove-orphans",
+        "docker-up:launch": "cross-env-shell docker-compose -f docker/docker-compose.infrastructure.yml -p netstreams-controlcenter-infra --project-directory . up -d --remove-orphans",
         "docker-up:post-launch-config:create-user-broker": "cross-env-shell docker exec broker kafka-configs --zookeeper zookeeper:2181 --alter --add-config 'SCRAM-SHA-256=[password=broker],SCRAM-SHA-512=[password=broker]' --entity-type users --entity-name broker",
         "docker-up:post-launch-config:create-user-connect": "cross-env-shell docker exec broker kafka-configs --zookeeper zookeeper:2181 --alter --add-config 'SCRAM-SHA-256=[password=connect-secret],SCRAM-SHA-512=[password=connect-secret]' --entity-type users --entity-name connect",
         "docker-up:post-launch-config:create-user-schemaregistry": "cross-env-shell docker exec broker kafka-configs --zookeeper zookeeper:2181 --alter --add-config 'SCRAM-SHA-256=[password=schemaregistry-secret],SCRAM-SHA-512=[password=schemaregistry-secret]' --entity-type users --entity-name schemaregistry",

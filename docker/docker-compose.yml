@@ -6,15 +6,15 @@ networks:
       name: netstreams-controlcenter-infra_default
 
 services:
-  workflow.auditing.observer:
+  netstreams.controlcenter.telemetryprocessor:
     image: telemetry-processor
     build:
       context: ./
-      dockerfile: src/NetStreams.ControlCenter/Server/NetStreams.ControlCenter.TelemetryProcessor/dockerfile
+      dockerfile: src/NetStreams.ControlCenter/Server/NetStreams.ControlCenter.TelemetryProcessor/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
       - ASPNETCORE_URLS=http://+:80
-      - SqlConnectionString=Server=db;Database=WorkflowAuditing;User Id=SA;Password=ReallyCoolPassword!;  
+      - SqlConnectionString=Server=db;Database=NetStreamsControlCenter;User Id=SA;Password=ReallyCoolPassword!;  
     ports:
       - "6101:80"
     volumes:
