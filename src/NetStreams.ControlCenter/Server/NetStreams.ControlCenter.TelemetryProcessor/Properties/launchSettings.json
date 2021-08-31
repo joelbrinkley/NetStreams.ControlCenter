@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "NetStreams.ControlCenter.TelemetryProcessor": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

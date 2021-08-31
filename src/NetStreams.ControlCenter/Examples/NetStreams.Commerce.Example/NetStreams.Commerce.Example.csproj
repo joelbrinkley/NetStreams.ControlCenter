@@ -10,7 +10,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\NetStreams.Extensions.ControlCenter\NetStreams.Extensions.ControlCenter.csproj" />
+	  <ProjectReference Include="..\..\Libs\NetStreams.Extensions.ControlCenter\NetStreams.Extensions.ControlCenter.csproj" />
 	</ItemGroup>
 
 </Project>
