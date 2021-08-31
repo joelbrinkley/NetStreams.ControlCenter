@@ -9,15 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{FE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specifications", "Specifications", "{1D606E41-733F-4470-93B9-5453181138DD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetStreams.ControlCenter.Specs", "NetStreams.ControlCenter.Specs\NetStreams.ControlCenter.Specs.csproj", "{F81F7805-6252-44F6-BD98-9664C0A81FE6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetStreams.Commerce.Example", "NetStreams.Commerce.Example\NetStreams.Commerce.Example.csproj", "{5B122477-E8AC-4B3A-8102-C354E9F5DD2E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{F1414888-7065-4D28-A390-EDA304836907}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetStreams.ControlCenter.TelemetryProcessor", "NetStreams.ControlCenter\NetStreams.ControlCenter.TelemetryProcessor.csproj", "{F40D5EC2-AE6F-44CE-BB71-8F82163A5CC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetStreams.Commerce.Example", "Examples\NetStreams.Commerce.Example\NetStreams.Commerce.Example.csproj", "{F58F0EEA-F84D-443C-83A8-A630D7C6A199}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetStreams.Extensions.ControlCenter", "NetStreams.Extensions.ControlCenter\NetStreams.Extensions.ControlCenter.csproj", "{A3672293-3076-46B6-9C80-C335A1B0A0E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetStreams.Extensions.ControlCenter", "Libs\NetStreams.Extensions.ControlCenter\NetStreams.Extensions.ControlCenter.csproj", "{D76B98F7-26AC-495E-96F8-3A12119D1A61}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetStreams.ControlCenter.Specs", "Specifications\NetStreams.ControlCenter.Specs\NetStreams.ControlCenter.Specs.csproj", "{1EC2EB77-3A4E-489F-9245-33C306FA887C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetStreams.ControlCenter.TelemetryProcessor", "Server\NetStreams.ControlCenter.TelemetryProcessor\NetStreams.ControlCenter.TelemetryProcessor.csproj", "{8BE54F76-2B0F-4581-A528-10AA0CC8055A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,31 +25,31 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F81F7805-6252-44F6-BD98-9664C0A81FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F81F7805-6252-44F6-BD98-9664C0A81FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F81F7805-6252-44F6-BD98-9664C0A81FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F81F7805-6252-44F6-BD98-9664C0A81FE6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5B122477-E8AC-4B3A-8102-C354E9F5DD2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B122477-E8AC-4B3A-8102-C354E9F5DD2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B122477-E8AC-4B3A-8102-C354E9F5DD2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B122477-E8AC-4B3A-8102-C354E9F5DD2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F40D5EC2-AE6F-44CE-BB71-8F82163A5CC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F40D5EC2-AE6F-44CE-BB71-8F82163A5CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F40D5EC2-AE6F-44CE-BB71-8F82163A5CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F40D5EC2-AE6F-44CE-BB71-8F82163A5CC0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3672293-3076-46B6-9C80-C335A1B0A0E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3672293-3076-46B6-9C80-C335A1B0A0E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3672293-3076-46B6-9C80-C335A1B0A0E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3672293-3076-46B6-9C80-C335A1B0A0E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F58F0EEA-F84D-443C-83A8-A630D7C6A199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F58F0EEA-F84D-443C-83A8-A630D7C6A199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F58F0EEA-F84D-443C-83A8-A630D7C6A199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F58F0EEA-F84D-443C-83A8-A630D7C6A199}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D76B98F7-26AC-495E-96F8-3A12119D1A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D76B98F7-26AC-495E-96F8-3A12119D1A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D76B98F7-26AC-495E-96F8-3A12119D1A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D76B98F7-26AC-495E-96F8-3A12119D1A61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EC2EB77-3A4E-489F-9245-33C306FA887C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EC2EB77-3A4E-489F-9245-33C306FA887C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EC2EB77-3A4E-489F-9245-33C306FA887C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EC2EB77-3A4E-489F-9245-33C306FA887C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BE54F76-2B0F-4581-A528-10AA0CC8055A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BE54F76-2B0F-4581-A528-10AA0CC8055A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BE54F76-2B0F-4581-A528-10AA0CC8055A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BE54F76-2B0F-4581-A528-10AA0CC8055A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{F81F7805-6252-44F6-BD98-9664C0A81FE6} = {1D606E41-733F-4470-93B9-5453181138DD}
-		{5B122477-E8AC-4B3A-8102-C354E9F5DD2E} = {FEADDEA7-A7BB-4838-A554-3479C956A006}
-		{F40D5EC2-AE6F-44CE-BB71-8F82163A5CC0} = {F1414888-7065-4D28-A390-EDA304836907}
-		{A3672293-3076-46B6-9C80-C335A1B0A0E6} = {E0FA9AA4-AD74-4D03-8A0D-44F599CD0932}
+		{F58F0EEA-F84D-443C-83A8-A630D7C6A199} = {FEADDEA7-A7BB-4838-A554-3479C956A006}
+		{D76B98F7-26AC-495E-96F8-3A12119D1A61} = {E0FA9AA4-AD74-4D03-8A0D-44F599CD0932}
+		{1EC2EB77-3A4E-489F-9245-33C306FA887C} = {1D606E41-733F-4470-93B9-5453181138DD}
+		{8BE54F76-2B0F-4581-A528-10AA0CC8055A} = {F1414888-7065-4D28-A390-EDA304836907}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FB2A23ED-6F6A-47D3-8006-84D4F48C2C61}
