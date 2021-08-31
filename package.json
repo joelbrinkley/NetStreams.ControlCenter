@@ -1,0 +1,42 @@
+{
+    "name": "netstreams-control-center",
+    "projectName": "NetStreams Control Center",
+    "configuration": "Release",
+    "description": "A user interface for the NetStreams library.",
+    "defaultPublishSource": "https://api.nuget.org/v3/index.json",
+    "repository": {
+        "type": "git",
+        "url": "https://https://github.com/joelbrinkley/NetStreams.ControlCenter.git"
+    },
+    "scripts": {
+        "docker-up": "npm run docker-up:infra && npm run docker-build",
+        "docker-build": "cross-env-shell docker-compose -f docker/docker-compose.yml -p netstreams-controlcenter --project-directory . up -d --remove-orphans --build ",
+        "docker-up:infra": "npm run docker-up:launch && npm-run-all docker-up:post-launch-config:*",
+        "docker-up:launch": "cross-env-shell docker-compose -f docker/docker-compose.infrastructure.yml -p netstreams-controlcenter-infra --project-directory . up -d --remove-orphans",
+        "docker-up:post-launch-config:create-user-broker": "cross-env-shell docker exec broker kafka-configs --zookeeper zookeeper:2181 --alter --add-config 'SCRAM-SHA-256=[password=broker],SCRAM-SHA-512=[password=broker]' --entity-type users --entity-name broker",
+        "docker-up:post-launch-config:create-user-connect": "cross-env-shell docker exec broker kafka-configs --zookeeper zookeeper:2181 --alter --add-config 'SCRAM-SHA-256=[password=connect-secret],SCRAM-SHA-512=[password=connect-secret]' --entity-type users --entity-name connect",
+        "docker-up:post-launch-config:create-user-schemaregistry": "cross-env-shell docker exec broker kafka-configs --zookeeper zookeeper:2181 --alter --add-config 'SCRAM-SHA-256=[password=schemaregistry-secret],SCRAM-SHA-512=[password=schemaregistry-secret]' --entity-type users --entity-name schemaregistry",
+        "docker-up:post-launch-config:create-user-ksqldb": "cross-env-shell docker exec broker kafka-configs --zookeeper zookeeper:2181 --alter --add-config 'SCRAM-SHA-256=[password=ksqldb-secret],SCRAM-SHA-512=[password=ksqldb-secret]' --entity-type users --entity-name ksqldb",
+        "docker-up:post-launch-config:create-user-client": "cross-env-shell docker exec broker kafka-configs --zookeeper zookeeper:2181 --alter --add-config 'SCRAM-SHA-256=[password=client-secret],SCRAM-SHA-512=[password=client-secret]' --entity-type users --entity-name client",
+        "docker-up:post-launch-config:create-telemetry-topic": "cross-env-shell docker exec broker kafka-topics --zookeeper zookeeper:2181 --create --topic netstreams.controlcenter.telemetry --partitions 10 --replication-factor 1",
+        "docker-down": "docker-compose -f docker/docker-compose.yml -f docker/docker-compose.infrastructure.yml --project-directory . down"
+    },
+    "keywords": [
+        "confluent",
+        "kafka"
+    ],
+    "author": "NetStream Contributors",
+    "license": "MIT",
+    "private": true,
+    "devDependencies": {
+        "copyfiles": "^2.2.0",
+        "cross-env": "github:yinzara/cross-env#pr/default-values",
+        "globstar": "^1.0.0",
+        "if-env-defined": "^1.0.0",
+        "mkdirp": "^1.0.4",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^3.0.2",
+        "standard-version": "^8.0.2",
+        "wait-on": "^5.1.0"
+    }
+}
