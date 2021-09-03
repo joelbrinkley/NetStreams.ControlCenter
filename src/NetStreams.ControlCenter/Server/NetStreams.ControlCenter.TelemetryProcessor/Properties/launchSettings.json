@@ -1,10 +1,10 @@
 {
   "profiles": {
     "NetStreams.ControlCenter.TelemetryProcessor": {
-      "commandName": "Project"
-    },
-    "Docker": {
-      "commandName": "Docker"
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   }
 }

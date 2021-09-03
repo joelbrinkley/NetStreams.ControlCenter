@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NetStreams.ControlCenter.TelemetryProcessor;
 using NetStreams.ControlCenter.TelemetryProcessor.EventHandlers;
 using NetStreams.ControlCenter.TelemetryProcessor.Infrastructure.EntityFrameworkCore;
+using NetStreams.ControlCenter.TelemetryProcessor.Models;
 
 namespace NetStreams.ControlCenter.Streams
 {
@@ -13,7 +15,18 @@ namespace NetStreams.ControlCenter.Streams
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                var host = CreateHostBuilder(args).Build();
+                using (var serviceScope = host.Services.CreateScope())
+                {
+                    host.Run();
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("An unexpected error occurred starting the host.");
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -26,10 +39,10 @@ namespace NetStreams.ControlCenter.Streams
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
+                    services.AddMediatR(typeof(StreamStartedNotification));
                     services.AddTelemetryDbContext();
-                    services.AddSingleton<ITelemetryEventHandler, TelemetryEventHandler>();
+                    services.AddScoped<IStreamProcessorRepository, StreamProcessorRepository>();
                     services.AddHostedService<TelemetryStreamProcessor>();
                 });
-
     }
 }

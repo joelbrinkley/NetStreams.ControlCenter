@@ -10,7 +10,6 @@ namespace NetStreams.ControlCenter.TelemetryProcessor.Models
         public string Name { get; set; }
         public bool Running { get; set; }
         public DateTimeOffset LastStarted { get; set; }
-
         public ICollection<ConsumedMessage> ConsumedMessages { get; set; } = new List<ConsumedMessage>();
     }
 }
