@@ -14,10 +14,15 @@ namespace NetStreams.ControlCenter.TelemetryProcessor.EventHandlers
             _streamProcessorRepository = streamProcessorRepository;
         }
 
-        public Task Handle(StreamHeartBeatNotification notification, CancellationToken cancellationToken)
+        public async Task Handle(StreamHeartBeatNotification notification, CancellationToken cancellationToken)
         {
-            //TODO
-            return Task.CompletedTask;
+            var streamProcessor = await _streamProcessorRepository.GetAsync(notification.StreamProcessorName, cancellationToken);
+           
+            if(streamProcessor != null)
+            {
+                streamProcessor.LastHeartBeat = notification.OccurredOn;
+                await _streamProcessorRepository.UpdateAsync(streamProcessor, cancellationToken);
+            }
         }
     }
 }

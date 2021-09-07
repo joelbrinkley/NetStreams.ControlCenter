@@ -20,9 +20,12 @@ namespace NetStreams.ControlCenter.TelemetryProcessor.Infrastructure.EntityFrame
 
             modelBuilder.Entity<StreamProcessor>().HasIndex(model => model.Name).IsUnique();
 
-            modelBuilder.Entity<StreamProcessor>().HasMany(model => model.ConsumedMessages);
+            modelBuilder.Entity<StreamProcessor>().HasMany(model => model.StreamPartitions);
+
+            modelBuilder.Entity<StreamPartition>().ToTable("StreamPartitions").HasKey(model => model.Id);
 
             modelBuilder.Entity<ConsumedMessage>().HasKey(model => model.Id);
+
 
         }
     }

@@ -42,6 +42,7 @@ namespace NetStreams.ControlCenter.Streams
                     services.AddMediatR(typeof(StreamStartedNotification));
                     services.AddTelemetryDbContext();
                     services.AddScoped<IStreamProcessorRepository, StreamProcessorRepository>();
+                    services.AddScoped<IMessageRepository, MessageRepository>();
                     services.AddHostedService<TelemetryStreamProcessor>();
                 });
     }

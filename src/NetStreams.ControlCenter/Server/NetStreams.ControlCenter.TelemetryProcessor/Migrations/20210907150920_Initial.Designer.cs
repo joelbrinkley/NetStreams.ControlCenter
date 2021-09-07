@@ -10,8 +10,8 @@ using NetStreams.ControlCenter.TelemetryProcessor.Infrastructure.EntityFramework
 namespace NetStreams.ControlCenter.TelemetryProcessor.Migrations
 {
     [DbContext(typeof(TelemetryDbContext))]
-    [Migration("20210903162433_initial")]
-    partial class initial
+    [Migration("20210907150920_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,8 +30,45 @@ namespace NetStreams.ControlCenter.TelemetryProcessor.Migrations
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Completed")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("CompletedOn")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<string>("Key")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("ProcessingDurationSeconds")
+                        .HasColumnType("float");
+
+                    b.Property<DateTimeOffset>("StartedOn")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("StreamProcessorId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ConsumedMessages");
+                });
+
+            modelBuilder.Entity("NetStreams.ControlCenter.TelemetryProcessor.Models.StreamPartition", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<long>("Lag")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("LastUpdated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<long>("Offset")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("Partition")
+                        .HasColumnType("int");
 
                     b.Property<string>("StreamProcessorId")
                         .HasColumnType("nvarchar(450)");
@@ -40,13 +77,16 @@ namespace NetStreams.ControlCenter.TelemetryProcessor.Migrations
 
                     b.HasIndex("StreamProcessorId");
 
-                    b.ToTable("ConsumedMessages");
+                    b.ToTable("StreamPartitions");
                 });
 
             modelBuilder.Entity("NetStreams.ControlCenter.TelemetryProcessor.Models.StreamProcessor", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTimeOffset>("LastHeartBeat")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<DateTimeOffset>("LastStarted")
                         .HasColumnType("datetimeoffset");
@@ -66,16 +106,16 @@ namespace NetStreams.ControlCenter.TelemetryProcessor.Migrations
                     b.ToTable("StreamProcessors");
                 });
 
-            modelBuilder.Entity("NetStreams.ControlCenter.TelemetryProcessor.Models.ConsumedMessage", b =>
+            modelBuilder.Entity("NetStreams.ControlCenter.TelemetryProcessor.Models.StreamPartition", b =>
                 {
                     b.HasOne("NetStreams.ControlCenter.TelemetryProcessor.Models.StreamProcessor", null)
-                        .WithMany("ConsumedMessages")
+                        .WithMany("StreamPartitions")
                         .HasForeignKey("StreamProcessorId");
                 });
 
             modelBuilder.Entity("NetStreams.ControlCenter.TelemetryProcessor.Models.StreamProcessor", b =>
                 {
-                    b.Navigation("ConsumedMessages");
+                    b.Navigation("StreamPartitions");
                 });
 #pragma warning restore 612, 618
         }
