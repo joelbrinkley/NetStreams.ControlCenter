@@ -17,14 +17,17 @@ namespace NetStreams.ControlCenter.TelemetryProcessor
     public class TelemetryStreamProcessor : BackgroundService
     {
         private readonly IConfiguration _configuration;
+        private readonly IServiceProvider _services;
         private readonly IMediator _mediator;
         private INetStream _stream;
 
         public TelemetryStreamProcessor(
             IConfiguration configuration, 
+            IServiceProvider services,
             IMediator mediator)
         {
             _configuration = configuration;
+            _services = services;
             _mediator = mediator;
         }
 
@@ -40,6 +43,7 @@ namespace NetStreams.ControlCenter.TelemetryProcessor
                 cfg.ConsumerGroup = streamConfiguration.ConsumerGroup;
                 cfg.ContinueOnError = true;
                 cfg.AutoOffsetReset = Confluent.Kafka.AutoOffsetReset.Earliest;
+                cfg.ScopePerMessage(_services);
             })
             .Stream(streamConfiguration.From)
             .HandleAsync(async context => await _mediator.Publish(context.Message.ToNotification(), stoppingToken))

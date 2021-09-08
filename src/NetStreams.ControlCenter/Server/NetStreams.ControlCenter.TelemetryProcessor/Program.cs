@@ -17,15 +17,15 @@ namespace NetStreams.ControlCenter.Streams
         {
             try
             {
-                var host = CreateHostBuilder(args).Build();
-                using (var serviceScope = host.Services.CreateScope())
-                {
-                    host.Run();
-                }
+                CreateHostBuilder(args)
+                    .Build()
+                    .Run();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("An unexpected error occurred starting the host.");
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
             }
         }
 
