@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using NetStreams.ControlCenter.TelemetryProcessor.Configuration;
 using NetStreams.ControlCenter.TelemetryProcessor.EventHandlers;
+using NetStreams.ControlCenter.TelemetryProcessor.Extensions;
 using NetStreams.Telemetry;
 using System;
 using System.Collections.Generic;
@@ -15,13 +17,18 @@ namespace NetStreams.ControlCenter.TelemetryProcessor
     public class TelemetryStreamProcessor : BackgroundService
     {
         private readonly IConfiguration _configuration;
-        private readonly ITelemetryEventHandler _telemetryEventHandler;
+        private readonly IServiceProvider _services;
+        private readonly IMediator _mediator;
         private INetStream _stream;
 
-        public TelemetryStreamProcessor(IConfiguration configuration, ITelemetryEventHandler telemetryEventHandler)
+        public TelemetryStreamProcessor(
+            IConfiguration configuration, 
+            IServiceProvider services,
+            IMediator mediator)
         {
             _configuration = configuration;
-            _telemetryEventHandler = telemetryEventHandler;
+            _services = services;
+            _mediator = mediator;
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -30,15 +37,16 @@ namespace NetStreams.ControlCenter.TelemetryProcessor
 
             if (streamConfiguration == null) throw new Exception("NetStreamTelemetryStreamProcessor configuration is not defined.");
 
-            _stream = new NetStreamBuilder<string, dynamic>(cfg =>
+            _stream = new NetStreamBuilder<string, NetStreamTelemetryEvent>(cfg =>
             {
                 cfg.BootstrapServers = streamConfiguration.BootstrapServers;
                 cfg.ConsumerGroup = streamConfiguration.ConsumerGroup;
                 cfg.ContinueOnError = true;
                 cfg.AutoOffsetReset = Confluent.Kafka.AutoOffsetReset.Earliest;
+                cfg.ScopePerMessage(_services);
             })
             .Stream(streamConfiguration.From)
-            .HandleAsync(async context => await _telemetryEventHandler.HandleAsync(context.Message))
+            .HandleAsync(async context => await _mediator.Publish(context.Message.ToNotification(), stoppingToken))
             .OnError(err => Console.WriteLine("Err: skipping message."))
             .Build();
 
