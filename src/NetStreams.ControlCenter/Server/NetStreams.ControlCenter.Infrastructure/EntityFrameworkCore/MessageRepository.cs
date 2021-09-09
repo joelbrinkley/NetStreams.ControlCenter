@@ -1,13 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NetStreams.ControlCenter.TelemetryProcessor.Infrastructure.EntityFrameworkCore;
+using NetStreams.ControlCenter.Models;
+using NetStreams.ControlCenter.Models.Abstractions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NetStreams.ControlCenter.TelemetryProcessor.Models
+namespace NetStreams.ControlCenter.Infrastructure.EntityFrameworkCore
 {
     public class MessageRepository : IMessageRepository
     {

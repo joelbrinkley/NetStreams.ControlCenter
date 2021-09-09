@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NetStreams.ControlCenter.TelemetryProcessor.Models;
-using System.Linq;
+using NetStreams.ControlCenter.Models;
+using NetStreams.ControlCenter.Models.Abstractions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NetStreams.ControlCenter.TelemetryProcessor.Infrastructure.EntityFrameworkCore
+namespace NetStreams.ControlCenter.Infrastructure.EntityFrameworkCore
 {
     public class StreamProcessorRepository : IStreamProcessorRepository
     {

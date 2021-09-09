@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NetStreams.ControlCenter.TelemetryProcessor.Models;
+using NetStreams.ControlCenter.Models;
 
-namespace NetStreams.ControlCenter.TelemetryProcessor.Infrastructure.EntityFrameworkCore
+namespace NetStreams.ControlCenter.Infrastructure.EntityFrameworkCore
 {
     public class TelemetryDbContext : DbContext
     {

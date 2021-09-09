@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NetStreams.ControlCenter.TelemetryProcessor.Infrastructure.EntityFrameworkCore;
+using NetStreams.ControlCenter.Infrastructure.EntityFrameworkCore;
 
-namespace NetStreams.ControlCenter.TelemetryProcessor.Migrations
+namespace NetStreams.ControlCenter.Infrastructure.Migrations
 {
     [DbContext(typeof(TelemetryDbContext))]
-    partial class TelemetryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210909122627_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,7 +21,7 @@ namespace NetStreams.ControlCenter.TelemetryProcessor.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("NetStreams.ControlCenter.TelemetryProcessor.Models.ConsumedMessage", b =>
+            modelBuilder.Entity("NetStreams.ControlCenter.Models.ConsumedMessage", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +53,7 @@ namespace NetStreams.ControlCenter.TelemetryProcessor.Migrations
                     b.ToTable("ConsumedMessages");
                 });
 
-            modelBuilder.Entity("NetStreams.ControlCenter.TelemetryProcessor.Models.StreamPartition", b =>
+            modelBuilder.Entity("NetStreams.ControlCenter.Models.StreamPartition", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -78,7 +80,7 @@ namespace NetStreams.ControlCenter.TelemetryProcessor.Migrations
                     b.ToTable("StreamPartitions");
                 });
 
-            modelBuilder.Entity("NetStreams.ControlCenter.TelemetryProcessor.Models.StreamProcessor", b =>
+            modelBuilder.Entity("NetStreams.ControlCenter.Models.StreamProcessor", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -104,14 +106,14 @@ namespace NetStreams.ControlCenter.TelemetryProcessor.Migrations
                     b.ToTable("StreamProcessors");
                 });
 
-            modelBuilder.Entity("NetStreams.ControlCenter.TelemetryProcessor.Models.StreamPartition", b =>
+            modelBuilder.Entity("NetStreams.ControlCenter.Models.StreamPartition", b =>
                 {
-                    b.HasOne("NetStreams.ControlCenter.TelemetryProcessor.Models.StreamProcessor", null)
+                    b.HasOne("NetStreams.ControlCenter.Models.StreamProcessor", null)
                         .WithMany("StreamPartitions")
                         .HasForeignKey("StreamProcessorId");
                 });
 
-            modelBuilder.Entity("NetStreams.ControlCenter.TelemetryProcessor.Models.StreamProcessor", b =>
+            modelBuilder.Entity("NetStreams.ControlCenter.Models.StreamProcessor", b =>
                 {
                     b.Navigation("StreamPartitions");
                 });

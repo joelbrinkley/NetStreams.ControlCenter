@@ -4,10 +4,10 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetStreams.ControlCenter.Infrastructure.EntityFrameworkCore;
+using NetStreams.ControlCenter.Models.Abstractions;
 using NetStreams.ControlCenter.TelemetryProcessor;
 using NetStreams.ControlCenter.TelemetryProcessor.EventHandlers;
-using NetStreams.ControlCenter.TelemetryProcessor.Infrastructure.EntityFrameworkCore;
-using NetStreams.ControlCenter.TelemetryProcessor.Models;
 
 namespace NetStreams.ControlCenter.Streams
 {

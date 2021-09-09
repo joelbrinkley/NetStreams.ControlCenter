@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace NetStreams.ControlCenter.TelemetryProcessor.Migrations
+namespace NetStreams.ControlCenter.Infrastructure.Migrations
 {
     public partial class Initial : Migration
     {
