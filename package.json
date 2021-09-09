@@ -20,9 +20,9 @@
         "docker-up:post-launch-config:create-user-client": "cross-env-shell docker exec broker kafka-configs --zookeeper zookeeper:2181 --alter --add-config 'SCRAM-SHA-256=[password=client-secret],SCRAM-SHA-512=[password=client-secret]' --entity-type users --entity-name client",
         "docker-up:post-launch-config:create-telemetry-topic": "cross-env-shell docker exec broker kafka-topics --zookeeper zookeeper:2181 --create --topic netstreams.controlcenter.telemetry --partitions 10 --replication-factor 1",
         "docker-down": "docker-compose -f docker/docker-compose.yml -f docker/docker-compose.infrastructure.yml --project-directory . down",
-        "db:migration:new": "cross-env-shell dotnet ef --startup-project ./src/NetStreams.ControlCenter/Server/NetStreams.ControlCenter.TelemetryProcessor/ migrations add ${npm_config_name}",
-        "db:migration:remove": "cross-env-shell dotnet ef --startup-project ./src/NetStreams.ControlCenter/Server/NetStreams.ControlCenter.TelemetryProcessor/ migrations remove ${npm_config_name}",
-        "db:migration:update": "cross-env-shell dotnet ef --startup-project ./src/NetStreams.ControlCenter/Server/NetStreams.ControlCenter.TelemetryProcessor/ database update"
+        "db:migration:new"   : "cross-env-shell dotnet ef --startup-project ./src/NetStreams.ControlCenter/Server/NetStreams.ControlCenter.TelemetryProcessor/ --project ./src/NetStreams.ControlCenter/Server/NetStreams.ControlCenter.Infrastructure/ migrations add ${npm_config_name}",
+        "db:migration:remove": "cross-env-shell dotnet ef --startup-project ./src/NetStreams.ControlCenter/Server/NetStreams.ControlCenter.TelemetryProcessor/ --project ./src/NetStreams.ControlCenter/Server/NetStreams.ControlCenter.Infrastructure/ migrations remove ${npm_config_name}",
+        "db:migration:update": "cross-env-shell dotnet ef --startup-project ./src/NetStreams.ControlCenter/Server/NetStreams.ControlCenter.TelemetryProcessor/ --project ./src/NetStreams.ControlCenter/Server/NetStreams.ControlCenter.Infrastructure/ database update"
     
     },
     "keywords": [

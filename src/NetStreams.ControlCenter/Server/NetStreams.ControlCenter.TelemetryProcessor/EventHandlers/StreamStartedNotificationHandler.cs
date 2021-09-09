@@ -1,9 +1,7 @@
 ﻿using MediatR;
-using NetStreams.ControlCenter.TelemetryProcessor.Models;
+using NetStreams.ControlCenter.Models;
+using NetStreams.ControlCenter.Models.Abstractions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

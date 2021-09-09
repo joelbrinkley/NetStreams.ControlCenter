@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace NetStreams.ControlCenter.TelemetryProcessor.Models
+namespace NetStreams.ControlCenter.Models.Abstractions
 {
     public interface IStreamProcessorRepository
     {

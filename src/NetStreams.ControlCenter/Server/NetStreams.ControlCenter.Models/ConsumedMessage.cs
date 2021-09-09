@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NetStreams.ControlCenter.TelemetryProcessor.Models
+namespace NetStreams.ControlCenter.Models
 {
     public class ConsumedMessage
     {

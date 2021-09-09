@@ -20,6 +20,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\Libs\NetStreams.DependencyInjection.Extensions\NetStreams.DependencyInjection.Extensions.csproj" />
+	  <ProjectReference Include="..\NetStreams.ControlCenter.Infrastructure\NetStreams.ControlCenter.Infrastructure.csproj" />
+	  <ProjectReference Include="..\NetStreams.ControlCenter.Models\NetStreams.ControlCenter.Models.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
